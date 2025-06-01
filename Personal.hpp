@@ -4,8 +4,12 @@
 
 class Personal : public WorkTime, public Employee {
 public:
-	double hourlyRate = 1;
+	double hourlyRate = 1; // rate for 1 hour work
+
+	Personal() = default;
+	
 	virtual ~Personal() = 0;
+	
 	void calculateWorkedTimeSalary() override {
 		payment = workTime * hourlyRate;
 	}
