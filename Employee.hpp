@@ -7,10 +7,11 @@ public:
 	std::string name;
 	double workTime = 0; // actual worked time
 	double payment = 0; // full salary
+
+	Employee() = default;
 	
-	Employee(int _id, std::string& _name, double _workTime = 0) :
-		id{ _id }, name{ _name }, workTime{ _workTime }, payment{ 0 } {
-	}
+	Employee(const int _id, const std::string& _name) :
+		id{ _id }, name{ _name } {}
 
 	virtual ~Employee() = 0;
 
