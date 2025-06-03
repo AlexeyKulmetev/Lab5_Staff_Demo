@@ -3,7 +3,10 @@
 class Project {
 public:
 	virtual ~Project() = 0;
-	virtual double projectParticipationSalary() = 0;
+
+	// perhaps should be a privite to prevent using
+	// this method from Engineer`s heirarchy objects
+	virtual void calculateProjectPremium() = 0;
 };
 
 Project::~Project() {}

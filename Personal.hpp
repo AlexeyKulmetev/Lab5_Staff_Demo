@@ -4,6 +4,8 @@
 
 class Personal : public WorkTime, public Employee {
 public:
+	virtual ~Personal() = 0;
+
 	Personal() = default;
 
 	Personal(const int _id, const std::string& _name,
@@ -13,8 +15,6 @@ public:
 	void calculateWorkedTimeSalary() override {
 		payment = workTime * hourlyRate;
 	}
-
-	virtual ~Personal() = 0;
 
 private:
 	double hourlyRate = 1; // rate for 1 hour work
