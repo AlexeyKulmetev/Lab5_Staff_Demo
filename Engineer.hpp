@@ -8,6 +8,13 @@ class Engineer : public WorkTime, public Project, public Employee {
 public:
 	virtual ~Engineer() = 0;
 
+	Engineer() = default;
+
+	Engineer(const int _id, const std::string& _name,
+		const std::string& _projectName, const double _hourlyRate) :
+		Employee(_id, _name), projectName{ _projectName }, 
+		hourlyRate{ _hourlyRate } {}
+
 	void setProjectName(const std::string _projectName) {
 		projectName = _projectName;
 	}
@@ -16,11 +23,21 @@ public:
 		return projectName;
 	}
 
+	void setHourlyRate(const double _hourlyRate) {
+		hourlyRate = _hourlyRate;
+	}
 
-private:
-	std::string projectName;
-	double projectSalaryPremium = 0;
+	double getHourlyRate() const {
+		return hourlyRate;
+	}
 
+	void calculatePayment() override {
+		calculateProjectPremium();
+		calculateWorkedTimeSalary();
+		payment += projectSalaryPremium;
+	}
+
+protected:
 	// set projectSalaryPremium to 0 if the object
 	// does not participate any project
 	void calculateProjectPremium() override {
@@ -31,6 +48,14 @@ private:
 		else {
 			projectSalaryPremium = 0;
 		}
-
 	}
+
+	void calculateWorkedTimeSalary() override {
+		payment = workTime * hourlyRate;
+	}
+
+private:
+	std::string projectName; // key for projectsBudgets map
+	double projectSalaryPremium = 0; // premium by participation on project
+	double hourlyRate = 1; // rate for 1 hour work
 };

@@ -16,7 +16,7 @@ public:
 	static std::map<std::string, long int> projectsBudgets;
 
 	// returns false if the key is already exist
-	static bool addProjectBudget(std::string& projectsName, long int budget) {
+	static bool addProjectBudget(const std::string& projectsName, long int budget) {
 		if (projectsBudgets.find(projectsName) != projectsBudgets.end()) {
 			return false;
 		}
@@ -35,3 +35,4 @@ public:
 		}
 	}
 };
+
