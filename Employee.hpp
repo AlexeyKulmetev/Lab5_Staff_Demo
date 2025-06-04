@@ -23,6 +23,8 @@ public:
 		return workTime;
 	}
 
+	virtual void calculatePayment() = 0;
+
 	double getPayment() const {
 		return payment;
 	}

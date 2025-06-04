@@ -5,10 +5,8 @@
 #include "Budgets.hpp"
 
 class Engineer : public WorkTime, public Project, public Employee {
+public:
 	virtual ~Engineer() = 0;
-private:
-	std::string projectName;
-	double projectSalaryPremium = 0;
 
 	void setProjectName(const std::string _projectName) {
 		projectName = _projectName;
@@ -18,7 +16,21 @@ private:
 		return projectName;
 	}
 
+
+private:
+	std::string projectName;
+	double projectSalaryPremium = 0;
+
+	// set projectSalaryPremium to 0 if the object
+	// does not participate any project
 	void calculateProjectPremium() override {
-		projectSalaryPremium;
+		long int projectBudget = Budgets::getBudget(projectName);
+		if (projectBudget >= 0) {
+			projectSalaryPremium = (projectBudget / 3) / 100 * 6;
+		}
+		else {
+			projectSalaryPremium = 0;
+		}
+
 	}
 };

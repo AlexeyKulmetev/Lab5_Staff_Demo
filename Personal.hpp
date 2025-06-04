@@ -12,12 +12,16 @@ public:
 		const double _hourlyRate) : Employee(_id, _name), 
 		hourlyRate{ _hourlyRate } {}
 	
-	void calculateWorkedTimeSalary() override {
-		payment = workTime * hourlyRate;
+	void calculatePayment() override {
+		calculateWorkedTimeSalary();
 	}
 
 private:
 	double hourlyRate = 1; // rate for 1 hour work
+
+	void calculateWorkedTimeSalary() override {
+		payment = workTime * hourlyRate;
+	}
 };
 
 Personal::~Personal() {}
