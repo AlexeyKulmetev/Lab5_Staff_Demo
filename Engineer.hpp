@@ -59,3 +59,5 @@ private:
 	double projectSalaryPremium = 0; // premium by participation on project
 	double hourlyRate = 1; // rate for 1 hour work
 };
+
+Engineer::~Engineer() {}

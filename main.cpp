@@ -1,8 +1,9 @@
 #include "Cleaner.hpp"
 #include "Driver.hpp"
 #include "Tester.hpp"
-#include <iostream>
 #include "Budgets.hpp"
+#include <iostream>
+
 
 
 int main() {
@@ -17,9 +18,9 @@ int main() {
 	std::cout << "\n" << dr.getPayment();
 
 	Budgets::addProjectBudget("Project1", 200000);
-	//Tester ts(3, "Ivanich", "Project1", 2.1);
-	//ts.calculatePayment();
-	//std::cout << "n" << ts.getPayment();
+	Tester ts(3, "Ivanich", "Project1", 2.1);
+	ts.calculatePayment();
+	std::cout << "\n" << ts.getPayment();
 
 	return 0;
 }
