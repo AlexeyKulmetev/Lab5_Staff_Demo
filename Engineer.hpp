@@ -13,7 +13,7 @@ public:
 	Engineer(const int _id, const std::string& _name,
 		const std::string& _projectName, const double _hourlyRate) :
 		Employee(_id, _name), projectName{ _projectName }, 
-		hourlyRate{ _hourlyRate } {}
+		hourlyRate{ _hourlyRate },  {}
 
 	void setProjectName(const std::string _projectName) {
 		projectName = _projectName;

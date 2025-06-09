@@ -2,6 +2,7 @@
 #include "Driver.hpp"
 #include "Tester.hpp"
 #include "Budgets.hpp"
+#include "Programmer.hpp"
 #include <iostream>
 
 
@@ -21,6 +22,11 @@ int main() {
 	Tester ts(3, "Ivanich", "Project1", 2.1);
 	ts.calculatePayment();
 	std::cout << "\n" << ts.getPayment();
+
+	Budgets::addProjectBudget("Project2", 400000);
+	Programmer pr(4, "Ivanovna", "Project2", 3.1);
+	pr.calculatePayment();
+	std::cout << "\n" << pr.getPayment();
 
 	return 0;
 }
