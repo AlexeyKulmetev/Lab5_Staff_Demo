@@ -4,6 +4,8 @@
 #include "Employee.hpp"
 #include "Budgets.hpp"
 
+class TeamLeader {};
+
 class Engineer : public WorkTime, public Project, public Employee {
 public:
 	virtual ~Engineer() = 0;
@@ -13,7 +15,16 @@ public:
 	Engineer(const int _id, const std::string& _name,
 		const std::string& _projectName, const double _hourlyRate) :
 		Employee(_id, _name), projectName{ _projectName }, 
-		hourlyRate{ _hourlyRate },  {}
+		hourlyRate{ _hourlyRate } {}
+
+	Engineer(const int _id, const std::string& _name,
+		const std::string& _projectName, const double _hourlyRate,
+		const TeamLeader* _teamLeader) :
+		Employee(_id, _name), projectName{ _projectName },
+		hourlyRate{ _hourlyRate } 
+	{
+		
+	}
 
 	void setProjectName(const std::string _projectName) {
 		projectName = _projectName;
@@ -37,13 +48,17 @@ public:
 		payment += projectSalaryPremium;
 	}
 
+	double getProjectSalaryPremium() const {
+		return projectSalaryPremium;
+	}
+
 protected:
 	// set projectSalaryPremium to 0 if the object
 	// does not participate any project
 	void calculateProjectPremium() override {
 		long int projectBudget = Budgets::getBudget(projectName);
 		if (projectBudget >= 0) {
-			projectSalaryPremium = (projectBudget / 3) / 100 * 6;
+			projectSalaryPremium = (projectBudget / 8) / 100 * 6;
 		}
 		else {
 			projectSalaryPremium = 0;
@@ -54,10 +69,15 @@ protected:
 		payment = workTime * hourlyRate;
 	}
 
+	void setTeamLeader(TeamLeader* teamLeader) {
+		teamLeaderPointer = teamLeader;
+	}
+
 private:
 	std::string projectName; // key for projectsBudgets map
-	double projectSalaryPremium = 0; // premium by participation on project
-	double hourlyRate = 1; // rate for 1 hour work
+	double projectSalaryPremium = 0.0; // premium by participation on project
+	double hourlyRate = 1.0; // rate for 1 hour work
+	TeamLeader* teamLeaderPointer = nullptr;
 };
 
 Engineer::~Engineer() {}

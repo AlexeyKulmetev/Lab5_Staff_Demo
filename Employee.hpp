@@ -1,6 +1,7 @@
 #pragma once
 #include "string"
-#include "TeamLeader.hpp"
+
+
 
 class Employee {
 public:
@@ -25,16 +26,11 @@ public:
 		return payment;
 	}
 
-	void setTeamLeader(TeamLeader* teamLeader) {
-		teamLeaderPointer = teamLeader;
-	}
-
 protected:
 	int id = 0;
 	std::string name;
-	double workTime = 0; // actual worked time
-	double payment = 0; // full salary
-	TeamLeader* teamLeaderPointer = nullptr;
+	double workTime = 0.0; // actual worked time
+	double payment = 0.0; // full salary
 };
 
 Employee::~Employee() {}

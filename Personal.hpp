@@ -26,7 +26,7 @@ public:
 	}
 
 private:
-	double hourlyRate = 1; // rate for 1 hour work
+	double hourlyRate = 1.0; // rate for 1 hour work
 
 	void calculateWorkedTimeSalary() override {
 		payment = workTime * hourlyRate;
