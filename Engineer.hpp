@@ -4,7 +4,9 @@
 #include "Employee.hpp"
 #include "Budgets.hpp"
 
-class TeamLeader {};
+// Consider to implement observer pattern to
+// handle the Programmer and Tester deleting
+class TeamLeader;  // Forward declaration
 
 class Engineer : public WorkTime, public Project, public Employee {
 public:
@@ -16,15 +18,6 @@ public:
 		const std::string& _projectName, const double _hourlyRate) :
 		Employee(_id, _name), projectName{ _projectName }, 
 		hourlyRate{ _hourlyRate } {}
-
-	Engineer(const int _id, const std::string& _name,
-		const std::string& _projectName, const double _hourlyRate,
-		const TeamLeader* _teamLeader) :
-		Employee(_id, _name), projectName{ _projectName },
-		hourlyRate{ _hourlyRate } 
-	{
-		
-	}
 
 	void setProjectName(const std::string _projectName) {
 		projectName = _projectName;

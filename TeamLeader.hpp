@@ -2,7 +2,7 @@
 #include "Engineer.hpp"
 #include "Programmer.hpp"
 #include "Heading.hpp"
-#include <vector>
+#include <unordered_set>
 
 class TeamLeader : public Programmer, public Heading {
 public:
@@ -17,11 +17,19 @@ public:
 	// to the engineerPointers vector and add the TeamLeader pointer
 	// to the Employee object
 	void addEmployee(Engineer* engineer) {
-		if (engineer) {
-			engineerPointers.push_back(engineer);
-			++employeeNumber;
+		if (!engineer) {
+			return;
+		}
+		std::unordered_set<Engineer*>::iterator it = engineerPointers.find(engineer);
+		if (it == engineerPointers.end()) {
+			engineerPointers.insert(engineer);
+			++engineerNumber;
 			engineer->setTeamLeader(this);
 		}
+	}
+
+	void removeEmployee(Engineer* engineer) {
+		engineerPointers.erase(engineer);
 	}
 
 	void calculatePayment() override {
@@ -33,12 +41,11 @@ public:
 
 protected:
 	double calculateHeadingSalary() override {
-		headingPremium = employeeNumber * 60;
+		headingPremium = engineerNumber * 60;
 	}
 
 private:
-	// probably should have vector of pointers to all programmers and testers
-	std::vector<Engineer*> engineerPointers;
-	int employeeNumber = 0;
+	std::unordered_set<Engineer*> engineerPointers;
+	int engineerNumber = 0;
 	double headingPremium = 0.0;
 };
