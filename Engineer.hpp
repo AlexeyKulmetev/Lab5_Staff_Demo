@@ -9,8 +9,16 @@
 class TeamLeader;  // Forward declaration
 
 class Engineer : public WorkTime, public Project, public Employee {
+
 public:
-	virtual ~Engineer() = 0;
+
+	friend class TeamLeader;
+
+	virtual ~Engineer() {
+		if (teamLeaderPointer) {
+			teamLeaderPointer->removeEngineer(this);
+		}
+	}
 
 	Engineer() = default;
 
@@ -45,6 +53,10 @@ public:
 		return projectSalaryPremium;
 	}
 
+	TeamLeader* getTeamLeader() const {
+		return teamLeaderPointer;
+	}
+
 protected:
 	// set projectSalaryPremium to 0 if the object
 	// does not participate any project
@@ -62,15 +74,15 @@ protected:
 		payment = workTime * hourlyRate;
 	}
 
-	void setTeamLeader(TeamLeader* teamLeader) {
-		teamLeaderPointer = teamLeader;
-	}
-
 private:
 	std::string projectName; // key for projectsBudgets map
 	double projectSalaryPremium = 0.0; // premium by participation on project
 	double hourlyRate = 1.0; // rate for 1 hour work
 	TeamLeader* teamLeaderPointer = nullptr;
+
+	void setTeamLeader(TeamLeader* teamLeader) {
+		teamLeaderPointer = teamLeader;
+	}
 };
 
 Engineer::~Engineer() {}
