@@ -19,5 +19,5 @@ public:
 	static bool addProjectBudget(const std::string& projectsName, long int budget);
 
 	// returns -1 if the key did not found
-	static long int getBudget(std::string& projectName);
+	static long int getBudget(const std::string& projectName);
 };

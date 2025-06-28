@@ -10,7 +10,7 @@ bool Budgets::addProjectBudget(const std::string& projectsName, long int budget)
 	return true;
 }
 
-long int Budgets::getBudget(std::string& projectName) {
+long int Budgets::getBudget(const std::string& projectName) {
 	auto it = projectsBudgets.find(projectName);
 	if (it != projectsBudgets.end()) {
 		return it->second;

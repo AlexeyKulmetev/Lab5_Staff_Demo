@@ -12,13 +12,7 @@ class Engineer : public WorkTime, public Project, public Employee {
 
 public:
 
-	friend class TeamLeader;
-
-	virtual ~Engineer() {
-		if (teamLeaderPointer) {
-			teamLeaderPointer->removeEngineer(this);
-		}
-	}
+	virtual ~Engineer();
 
 	Engineer() = default;
 
@@ -63,7 +57,7 @@ protected:
 	void calculateProjectPremium() override {
 		long int projectBudget = Budgets::getBudget(projectName);
 		if (projectBudget >= 0) {
-			projectSalaryPremium = (projectBudget / 8) / 100 * 6;
+			projectSalaryPremium = (static_cast<double>(projectBudget) / 8.0) / 600.00;
 		}
 		else {
 			projectSalaryPremium = 0;
@@ -79,10 +73,9 @@ private:
 	double projectSalaryPremium = 0.0; // premium by participation on project
 	double hourlyRate = 1.0; // rate for 1 hour work
 	TeamLeader* teamLeaderPointer = nullptr;
+	friend class TeamLeader;
 
 	void setTeamLeader(TeamLeader* teamLeader) {
 		teamLeaderPointer = teamLeader;
 	}
 };
-
-Engineer::~Engineer() {}

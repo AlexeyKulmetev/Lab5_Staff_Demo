@@ -20,9 +20,6 @@ public:
 		Programmer(_id, _name, _projectName, _hourlyRate) {
 	}
 
-	// implement addEmployee function that will add pointer to engineer
-	// to the engineerPointers vector and add the TeamLeader pointer
-	// to the Employee object
 	void addEngineer(Engineer* engineer) {
 		if (!engineer) {
 			return;
@@ -37,6 +34,7 @@ public:
 
 	void removeEngineer(Engineer* engineer) {
 		engineerPointers.erase(engineer);
+		--engineerNumber;
 		if (engineer->getTeamLeader() == this) {
 			engineer->setTeamLeader(nullptr);
 		}
@@ -50,7 +48,7 @@ public:
 	}
 
 protected:
-	double calculateHeadingSalary() override {
+	void calculateHeadingSalary() override {
 		headingPremium = engineerNumber * 60;
 	}
 
