@@ -3,11 +3,6 @@
 
 class Employee {
 public:
-	int id = 0;
-	std::string name;
-	double workTime = 0; // actual worked time
-	double payment = 0; // full salary
-
 	Employee() = default;
 	
 	Employee(const int _id, const std::string& _name) :
@@ -28,6 +23,12 @@ public:
 	double getPayment() const {
 		return payment;
 	}
+
+protected:
+	double payment = 0; // full salary
+	int id = 0;
+	std::string name;
+	double workTime = 0; // actual worked time
 };
 
 Employee::~Employee() {}

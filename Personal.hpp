@@ -16,12 +16,18 @@ public:
 		calculateWorkedTimeSalary();
 	}
 
-private:
-	double hourlyRate = 1; // rate for 1 hour work
+	void setHourlyRate(const double _hourlyRate) {
+		hourlyRate = _hourlyRate;
+	}
 
+protected:
 	void calculateWorkedTimeSalary() override {
 		payment = workTime * hourlyRate;
 	}
+
+private:
+	double hourlyRate = 1; // rate for 1 hour work
+	double workedTimeSalary = 0;
 };
 
 Personal::~Personal() {}
