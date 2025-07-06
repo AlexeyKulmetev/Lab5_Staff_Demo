@@ -4,15 +4,16 @@
 #include "Employee.hpp"
 #include "Budgets.hpp"
 
+
 class Engineer : public WorkTime, public Project, public Employee {
 public:
 	virtual ~Engineer() = 0;
 
-	Engineer(const int _id, const std::string& _name, const std::string& _projectName,
-		const double _projectPremium, const double _workedTimeSalary, const double _hourlyRate)
+	Engineer(const int _id, const std::string& _name, const std::string& _projectName, 
+		const double _workedTimeSalary, const double _hourlyRate)
 		: Employee(_id, _name),
-		projectName{ _projectName }, projectPremium{ _projectPremium },
-		workedTimeSalary{ _workedTimeSalary }, hourlyRate{ _hourlyRate } {}
+		projectName{ _projectName }, workedTimeSalary{ _workedTimeSalary }, 
+		hourlyRate{ _hourlyRate } {}
 
 
 	void setProjectName(const std::string _projectName) {
@@ -61,3 +62,5 @@ private:
 	double workedTimeSalary = 0;
 	double hourlyRate = 1;
 };
+
+Engineer::~Engineer() {}

@@ -1,6 +1,8 @@
 #include "Cleaner.hpp"
 #include "Driver.hpp"
-#include "Engineer.hpp"
+//#include "Engineer.hpp"
+#include "Programmer.hpp"
+#include "Budgets.hpp"
 #include <iostream>
 
 
@@ -15,6 +17,12 @@ int main() {
 	dr.calculatePayment();
 	std::cout << "\n" << dr.getPayment();
 
+	Budgets::projectList.push_back("Arzamas");
+	Programmer pr(3, "Mihalich", "Arzamas", 150.0, 1.2);
+	Budgets::projectsBudgets.insert();
+	pr.setWorkTime(80.0);
+	pr.calculatePayment();
+	std::cout << "\n" << pr.getPayment();
 	
 
 	return 0;
