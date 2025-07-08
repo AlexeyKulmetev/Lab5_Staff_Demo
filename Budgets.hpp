@@ -16,6 +16,7 @@ class Budgets {
 public:
 	static std::map<std::string, long int> projectsBudgets;
 
+	// probably should use to store projects name list
 	static std::list<std::string> projectList;
 
 	// returns false if the key is already exist

@@ -2,6 +2,7 @@
 #include "Driver.hpp"
 //#include "Engineer.hpp"
 #include "Programmer.hpp"
+#include "Tester.hpp"
 #include "Budgets.hpp"
 #include <iostream>
 
@@ -18,11 +19,18 @@ int main() {
 	std::cout << "\n" << dr.getPayment();
 
 	Budgets::projectList.push_back("Arzamas");
+	Budgets::projectsBudgets.insert({ "Arzamas", 200000 });
 	Programmer pr(3, "Mihalich", "Arzamas", 150.0, 1.2);
-	Budgets::projectsBudgets.insert();
 	pr.setWorkTime(80.0);
 	pr.calculatePayment();
 	std::cout << "\n" << pr.getPayment();
+
+	Budgets::projectList.push_back("Sarov");
+	Budgets::projectsBudgets.insert({ "Sarov", 150000 });
+	Tester ts(4, "Nikitichna", "Sarov", 120.0, 1.1);
+	ts.setWorkTime(80.0);
+	ts.calculatePayment();
+	std::cout << "\n" << ts.getPayment();
 	
 
 	return 0;
