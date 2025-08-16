@@ -14,8 +14,6 @@
 
 class Budgets {
 public:
-	static std::map<std::string, long int> projectsBudgets;
-
 	// probably should use to store projects name list
 	static std::list<std::string> projectList;
 
@@ -24,4 +22,7 @@ public:
 
 	// returns -1 if the key did not found
 	static long int getBudget(std::string& projecgtName);
+
+private:
+	static std::map<std::string, long int> projectsBudgets;
 };

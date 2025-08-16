@@ -2,6 +2,7 @@
 
 std::map<std::string, long int> Budgets::projectsBudgets;
 
+// probably should use to store projects name list
 std::list<std::string> Budgets::projectList;
 
 // returns false if the key is already exist
